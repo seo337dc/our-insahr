@@ -1,0 +1,104 @@
+----------------------------------------------------- 2차 방식 -----------------------------------------------------
+
+import React, { useEffect } from 'react';
+import Calendar from 'tui-calendar';
+import 'tui-calendar/dist/tui-calendar.css';
+import 'tui-date-picker/dist/tui-date-picker.css';
+import 'tui-time-picker/dist/tui-time-picker.css';
+
+const calendar = new Calendar('#calendar', {
+    defaultView: 'month',
+    useCreationPopup: true,
+    useDetailPopup: true,
+});
+calendar.createSchedules([
+    {
+        id: '1',
+        calendarId: '1',
+        title: 'Major Lecture',
+        category: 'time',
+        dueDateClass: '',
+        start: '2020-12-01T22:30:00+09:00',
+        end: '2020-12-19T02:30:00+09:00',
+    },
+    {
+        id: '2',
+        calendarId: '2',
+        title: 'General Lecture',
+        category: 'time',
+        dueDateClass: '',
+        start: '2020-12-01T22:30:00+09:00',
+        end: '2020-12-19T02:30:00+09:00',
+        isReadOnly: true, // schedule is read-only
+    },
+]);
+
+calendar.setCalendarColor('1', {
+    color: '#ffffff',
+    bgColor: '#ff5583',
+    dragBgColor: '#ff5583',
+    borderColor: '#ff5583',
+});
+calendar.setCalendarColor('2', {
+    color: '#ffffff',
+    bgColor: '#dc9656',
+    dragBgColor: '#dc9656',
+    borderColor: '#dc9656',
+});
+
+calendar.clear();
+calendar.render();
+export default function CalenderComponent() {
+    return <div></div>;
+}
+
+
+
+
+
+
+
+//----------------------------------------------------- 2차 방식 -----------------------------------------------------
+const CalenderComponent = () => {
+    useEffect(() => {
+        const calendar = new Calendar('#calendar', {
+            defaultView: 'month',
+            taskView: true,
+            useCreationPopup: true,
+            useDetailPopup: true,
+            template: {
+                monthGridHeader: function (model) {
+                    var date = new Date(model.date);
+                    var template = '<span class="tui-full-calendar-weekday-grid-date">' + date.getDate() + '</span>';
+                    return template;
+                },
+            },
+        });
+
+        calendar.createSchedules([
+            {
+                id: '1',
+                calendarId: '1',
+                title: 'my schedule',
+                category: 'time',
+                dueDateClass: '',
+                start: '2020-12-02T22:30:00+09:00',
+                end: '2020-12-19T02:30:00+09:00',
+            },
+            {
+                id: '2',
+                calendarId: '1',
+                title: 'second schedule',
+                category: 'time',
+                dueDateClass: '',
+                start: '2018-01-18T17:30:00+09:00',
+                end: '2018-01-19T17:31:00+09:00',
+                isReadOnly: true, // schedule is read-only
+            },
+        ]);
+    }, []);
+
+    return <div id="calendar" style={{ height: 800 + 'px' }}></div>;
+};
+
+export default CalenderComponent;
