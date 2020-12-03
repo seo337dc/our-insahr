@@ -1,45 +1,59 @@
-import React, { useEffect } from 'react';
-import Calendar from 'tui-calendar';
-import 'tui-calendar/dist/tui-calendar.css';
-import 'tui-date-picker/dist/tui-date-picker.css';
-import 'tui-time-picker/dist/tui-time-picker.css';
+import React, { useEffect, useState } from 'react';
+import calendarAPI from '../api/calendarAPI';
 
 //2차 방식
 const CalenderComponent = ({ sData }) => {
-    console.log(sData);
-
     useEffect(() => {
-        const calendar = new Calendar('#calendar', {
-            defaultView: 'month',
-            taskView: true,
-            useCreationPopup: true,
-            useDetailPopup: true,
-            template: {
-                monthGridHeader: function (model) {
-                    var date = new Date(model.date);
-                    var template = '<span class="tui-full-calendar-weekday-grid-date">' + date.getDate() + '</span>';
-                    return template;
-                },
+        calendarAPI.createSchedules([
+            {
+                id: '1',
+                calendarId: '1',
+                title: 'my schedule',
+                category: 'time',
+                dueDateClass: '',
+                start: '2020-12-02T22:30:00+09:00',
+                end: '2020-12-19T02:30:00+09:00',
             },
-        });
+            {
+                id: '2',
+                calendarId: '1',
+                title: 'second schedule',
+                category: 'time',
+                dueDateClass: '',
+                start: '2018-01-18T17:30:00+09:00',
+                end: '2018-01-19T17:31:00+09:00',
+                isReadOnly: true, // schedule is read-only
+            },
+        ]);
+    });
 
-        calendar.createSchedules(
-            sData.map((data) => {
-                return {
-                    id: data.id,
-                    title: data.title,
-                    start: data.start,
-                    end: data.end,
-                    isReadOnly: data.isReadOnly,
-                    category: data.category,
-                    isReadOnly: false, //data.isReadOnly,
-                    calendarId: data.calendarId,
-                };
-            })
-        );
-    }, []);
+    const handleView = (view) => {
+        switch (view) {
+            case 'month':
+                calendarAPI.changeView('month', true);
+                break;
+            case 'week':
+                calendarAPI.changeView('week', true);
+                break;
+            case 'day':
+                calendarAPI.changeView('day', true);
+                break;
 
-    return <div id="calendar" style={{ height: 800 + 'px' }}></div>;
+            default:
+                break;
+        }
+    };
+
+    return (
+        <div>
+            <div>
+                <button onClick={() => handleView('month')}>M</button>
+                <button onClick={() => handleView('week')}>W</button>
+                <button onClick={() => handleView('day')}>D</button>
+            </div>
+            <div id="calendar"></div>
+        </div>
+    );
 };
 
 export default CalenderComponent;

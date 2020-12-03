@@ -1,11 +1,11 @@
 {
   "../components/CalenderComponent": [
     {
-      "id": "./components/CalenderComponent.js",
+      "id": "./api/calendarAPI.js",
       "file": "static/chunks/1.js"
     },
     {
-      "id": "./node_modules/@babel/runtime/helpers/esm/defineProperty.js",
+      "id": "./components/CalenderComponent.js",
       "file": "static/chunks/1.js"
     },
     {
