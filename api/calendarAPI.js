@@ -11,6 +11,7 @@ const calendarAPI = new Calendar('#calendar', {
     template: {
         monthGridHeader: function (model) {
             var date = new Date(model.date);
+            console.log(model);
             var template = '<span class="tui-full-calendar-weekday-grid-date">' + date.getDate() + '</span>';
             return template;
         },

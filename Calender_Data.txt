@@ -1,24 +1,128 @@
-sData: [{id: "149", calendarId: "99", title: "한국심리측정평가학회 2020 연구방법론 기초학교 과정8 : 문항반응이론", category: "time",…},…]
-0: {id: "149", calendarId: "99", title: "한국심리측정평가학회 2020 연구방법론 기초학교 과정8 : 문항반응이론", category: "time",…}
-
-calendarId: "99"
-category: "time"
-end: "2020-11-28T18:00"
-id: "149"
-isAllDay: false
-isReadOnly: true
-start: "2020-11-28T13:00"
-title: "한국심리측정평가학회 2020 연구방법론 기초학교 과정8 : 문항반응이론"
-
-1: {id: "150", calendarId: "99", title: "한국심리측정평가학회 2020 온라인 추계 학술대회", category: "time",…}
-2: {id: "153", calendarId: "1", title: "(수정)LGU+결과리포트발송(다면평가)완료", category: "allday", start: "2020-10-30",…}
-3: {id: "154", calendarId: "1", title: "[채용] 개발자 면접", category: "time", start: "2020-10-28T10:00",…}
-4: {id: "155", calendarId: "1", title: "INSA Workshop", category: "allday", start: "2020-11-05",…}
-5: {id: "156", calendarId: "3", title: "[롯데] PJT미팅", category: "time", start: "2020-11-10T10:00",…}
-6: {id: "157", calendarId: "3", title: "[롯데] 가상인턴 PJT 미팅", category: "time", start: "2020-11-17T10:00",…}
-7: {id: "158", calendarId: "1", title: "테스트중입니다(..)", category: "allday", start: "2020-10-29",…}
-8: {id: "159", calendarId: "1", title: "[INSA&ACG] 가상업무pjt 미팅", category: "time",…}
-9: {id: "160", calendarId: "1", title: "[INSA&ACG] 가상업무 PJT미팅", category: "time",…}
-10: {id: "161", calendarId: "3", title: "롯데 AC 온라인플랫폼 논의", category: "time", start: "2020-11-25T13:00",…}
-11: {id: "162", calendarId: "99", title: "[미래엔] 인적성검사", category: "time", start: "2020-11-26T18:00",…}
-12: {id: "163", calendarId: "1", title: "[롯데] PJT 문항개발방향논의", category: "time", start: "2020-11-30T14:00",…}
+        {
+            id: '149',
+            calendarId: '99',
+            title: '한국심리측정평가학회 2020 연구방법론 기초학교 과정8 : 문항반응이론',
+            category: 'time',
+            isAllDay: false,
+            isReadOnly: true,
+            start: '2020-11-28T13:00',
+            end: '2020-11-28T18:00',
+        },
+        {
+            id: '150',
+            calendarId: '99',
+            title: '한국심리측정평가학회 2020 온라인 추계 학술대회',
+            category: 'time',
+            isAllDay: false,
+            isReadOnly: true,
+            start: '2020-10-24T13:00',
+            end: '2020-10-24T18:00',
+        },
+        {
+            id: '153',
+            calendarId: '1',
+            title: '(수정)LGU+결과리포트발송(다면평가)완료',
+            category: 'allday',
+            start: '2020-10-30',
+            end: '2020-10-30',
+            isAllDay: true,
+            isReadOnly: true,
+        },
+        {
+            id: '154',
+            calendarId: '1',
+            title: '[채용] 개발자 면접',
+            category: 'time',
+            start: '2020-10-28T10:00',
+            end: '2020-10-28T14:00',
+            isAllDay: false,
+            isReadOnly: true,
+        },
+        {
+            id: '155',
+            calendarId: '1',
+            title: 'INSA Workshop',
+            category: 'allday',
+            start: '2020-11-05',
+            end: '2020-11-06',
+            isAllDay: true,
+            isReadOnly: true,
+        },
+        {
+            id: '156',
+            calendarId: '3',
+            title: '[롯데] PJT미팅',
+            category: 'time',
+            start: '2020-11-10T10:00',
+            end: '2020-11-10T13:00',
+            isAllDay: false,
+            isReadOnly: true,
+        },
+        {
+            id: '157',
+            calendarId: '3',
+            title: '[롯데] 가상인턴 PJT 미팅',
+            category: 'time',
+            start: '2020-11-17T10:00',
+            end: '2020-11-17T13:00',
+            isAllDay: false,
+            isReadOnly: true,
+        },
+        {
+            id: '158',
+            calendarId: '1',
+            title: '테스트중입니다(..)',
+            category: 'allday',
+            start: '2020-10-29',
+            end: '2020-10-29',
+            isAllDay: true,
+            isReadOnly: true,
+        },
+        {
+            id: '159',
+            calendarId: '1',
+            title: '[INSA&ACG] 가상업무pjt 미팅',
+            category: 'time',
+            end: '2020-11-18T15:00',
+            isAllDay: false,
+            isReadOnly: true,
+        },
+        {
+            id: '160',
+            calendarId: '1',
+            title: '[INSA&ACG] 가상업무 PJT미팅',
+            category: 'time',
+            end: '2020-11-25T17:00',
+            isAllDay: false,
+            isReadOnly: true,
+        },
+        {
+            id: '161',
+            calendarId: '3',
+            title: '롯데 AC 온라인플랫폼 논의',
+            category: 'time',
+            start: '2020-11-25T13:00',
+            end: '2020-11-25T15:00',
+            isAllDay: false,
+            isReadOnly: true,
+        },
+        {
+            id: '162',
+            calendarId: '99',
+            title: '[미래엔] 인적성검사',
+            category: 'time',
+            start: '2020-11-26T18:00',
+            end: '2020-11-26T20:00',
+            isAllDay: false,
+            isReadOnly: true,
+        },
+        {
+            id: '163',
+            calendarId: '1',
+            title: '[롯데] PJT 문항개발방향논의',
+            category: 'time',
+            start: '2020-11-30T14:00',
+            end: '2020-11-30T15:00',
+            isAllDay: false,
+            isReadOnly: true,
+        },
