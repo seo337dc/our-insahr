@@ -13,8 +13,8 @@ export default [
         category: 'time',
         isAllDay: false,
         isReadOnly: true,
-        start: '2020-12-28T13:00',
-        end: '2020-12-28T18:00',
+        start: '2020-12-04T13:00',
+        end: '2020-12-04T18:00',
     },
     {
         id: '150',

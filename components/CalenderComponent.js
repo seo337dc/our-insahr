@@ -1,4 +1,5 @@
-import React, { useEffect, useState, useMemo } from 'react';
+import React, { useEffect, useState } from 'react';
+import moment from 'moment';
 import calendarAPI from '../api/calendarAPI';
 import { BsCheck } from 'react-icons/bs';
 
@@ -15,6 +16,7 @@ const CalenderComponent = ({ sData }) => {
     });
     const [viewState, setViewState] = useState({ month: true, week: false, day: false });
 
+    //처음 렌더링 할 때, 데이터 색 지정
     useEffect(() => {
         calendarAPI.clear();
         calendarAPI.createSchedules(
@@ -42,6 +44,7 @@ const CalenderComponent = ({ sData }) => {
         );
     }, []);
 
+    //전체,업무,공식일정,내부미팅,외부미팅,외근,기타 선택 기능
     useEffect(() => {
         //전체 선택 시 : 캘린더 전체
         if (checkColor.total) {
@@ -72,6 +75,7 @@ const CalenderComponent = ({ sData }) => {
         checkColor.ect ? calendarAPI.toggleSchedules('99', false, true) : calendarAPI.toggleSchedules('99', true, true);
     }, [checkColor]);
 
+    //월, 주, 일  캘린더 변화 기능
     const onHandleView = (view) => {
         //월,주,일 -> 이미 선택 했으면 취소
         if (viewState[view]) {
@@ -99,8 +103,8 @@ const CalenderComponent = ({ sData }) => {
         }
     };
 
+    //전체, 업무,공식일정,내부미팅,외부미팅,외근,기타 아이콘 기능
     const onHandleCalColor = (calendarId) => {
-        //전체, 업무,공식일정,내부미팅,외부미팅,외근,기타 아이콘 변경
         switch (calendarId) {
             case 1:
                 if (checkColor.task) {
@@ -176,14 +180,32 @@ const CalenderComponent = ({ sData }) => {
         }
     };
 
+    //날짜 변화 기능
+    const onHandleDate = (cal) => {
+        switch (cal) {
+            case '-':
+                calendarAPI.prev();
+                setToday(new Date(moment(calendarAPI.getDate().getTime()).format('YYYY-MM')));
+                break;
+
+            case '+':
+                calendarAPI.next();
+                setToday(new Date(moment(calendarAPI.getDate().getTime()).format('YYYY-MM')));
+                break;
+
+            default:
+                break;
+        }
+    };
+
     return (
         <div className="calender-container">
             <div className="calender-date">
-                <div className="date-btn">{`<`}</div>
+                <div className="date-btn" onClick={() => onHandleDate('-')}>{`<`}</div>
                 <div className="date">
-                    {today.getFullYear()}.{today.getMonth() + 1}
+                    {today.getFullYear()}.{today.getMonth() + 1 < 10 ? '0' + (today.getMonth() + 1) : today.getMonth() + 1}
                 </div>
-                <div className="date-btn">{`>`}</div>
+                <div className="date-btn" onClick={() => onHandleDate('+')}>{`>`}</div>
             </div>
             <div className="calender-menu">
                 <div className="calender-color">
