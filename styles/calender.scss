@@ -1,0 +1,127 @@
+.calender-container {
+    .calender-date {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .date-btn {
+            margin: 25px;
+            font-size: 30px;
+            cursor: pointer;
+        }
+
+        .date {
+            font-size: 50px;
+            font-weight: bold;
+        }
+    }
+
+    .calender-menu {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .calender-color {
+            display: flex;
+
+            div {
+                margin-right: 15px;
+                height: 30px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+
+                .total {
+                    margin: 2px;
+                    width: 15px;
+                    height: 15px;
+                    border-radius: 50%;
+                    background-color: #bda075;
+                }
+
+                .task {
+                    margin: 2px;
+                    width: 15px;
+                    height: 15px;
+                    border-radius: 50%;
+                    background-color: #176db8;
+                }
+
+                .official-schedule {
+                    margin: 2px;
+                    width: 15px;
+                    height: 15px;
+                    border-radius: 50%;
+                    background-color: #eb678f;
+                }
+
+                .internal-meeting {
+                    margin: 2px;
+                    width: 15px;
+                    height: 15px;
+                    border-radius: 50%;
+                    background-color: #b38ae4;
+                }
+
+                .external-meeting {
+                    margin: 2px;
+                    width: 15px;
+                    height: 15px;
+                    border-radius: 50%;
+                    background-color: #fedf7b;
+                }
+                .outside-work {
+                    margin: 2px;
+                    width: 15px;
+                    height: 15px;
+                    border-radius: 50%;
+                    background-color: #9bdba0;
+                }
+
+                .ect {
+                    margin: 2px;
+                    width: 15px;
+                    height: 15px;
+                    border-radius: 50%;
+                    background-color: #999999;
+                }
+
+                p {
+                    font-size: 20px;
+                    font-weight: bold;
+                    text-align: center;
+                }
+            }
+        }
+
+        .calender-category {
+            display: flex;
+
+            .disable-on {
+                cursor: pointer;
+
+                img {
+                    margin: 0 10px;
+                    width: 20px;
+                    height: 20px;
+                }
+            }
+
+            .disable-off {
+                cursor: pointer;
+
+                img {
+                    margin: 0 10px;
+                    width: 20px;
+                    height: 20px;
+                    opacity: 0.5;
+                }
+            }
+        }
+    }
+
+    .calendar-main {
+        margin-top: 50px;
+    }
+}
