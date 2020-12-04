@@ -3,6 +3,8 @@
     "next": "^10.0.3",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-icons": "^4.1.0",
+    "sass": "^1.29.0",
     "tui-calendar": "^1.12.14"
   },
   "scripts": {

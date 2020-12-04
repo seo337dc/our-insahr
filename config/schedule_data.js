@@ -1,3 +1,10 @@
+//0:전체 -bda075 신경쓰지말것...
+//1:업무 : #176db8
+//2:내부미팅 : #b38ae4
+//3:외부미팅 : #fedf7b
+//4:외근 : #9bdba0
+//5:공식일정 : #eb678f;
+//99:기타 : #999999
 export default [
     {
         id: '149',
@@ -16,7 +23,7 @@ export default [
         category: 'time',
         isAllDay: false,
         isReadOnly: true,
-        start: '2020-12-24T13:00',
+        start: '2020-12-03T13:00',
         end: '2020-12-24T18:00',
     },
     {
@@ -24,10 +31,10 @@ export default [
         calendarId: '1',
         title: '(수정)LGU+결과리포트발송(다면평가)완료',
         category: 'allday',
-        start: '2020-12-30',
-        end: '2020-12-30',
-        isAllDay: true,
-        isReadOnly: true,
+        start: '2020-12-01T13:00',
+        end: '2020-12-24T13:00',
+        isAllDay: false,
+        isReadOnly: false,
     },
     {
         id: '154',
@@ -37,15 +44,15 @@ export default [
         start: '2020-12-28T10:00',
         end: '2020-12-28T14:00',
         isAllDay: false,
-        isReadOnly: true,
+        isReadOnly: false,
     },
     {
         id: '155',
-        calendarId: '1',
+        calendarId: '5',
         title: 'INSA Workshop',
         category: 'allday',
-        start: '2020-12-05',
-        end: '2020-12-06',
+        start: '2020-12-05T10:00',
+        end: '2020-12-05T10:00',
         isAllDay: true,
         isReadOnly: true,
     },
@@ -71,7 +78,7 @@ export default [
     },
     {
         id: '158',
-        calendarId: '1',
+        calendarId: '4',
         title: '테스트중입니다(..)',
         category: 'allday',
         start: '2020-12-29',

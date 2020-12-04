@@ -9,6 +9,10 @@
       "file": "static/chunks/1.js"
     },
     {
+      "id": "./node_modules/@babel/runtime/helpers/esm/defineProperty.js",
+      "file": "static/chunks/1.js"
+    },
+    {
       "id": "./node_modules/next/node_modules/css-loader/dist/cjs.js?!./node_modules/next/dist/compiled/postcss-loader/cjs.js?!./node_modules/tui-calendar/dist/tui-calendar.css",
       "file": "static/chunks/1.js"
     },
@@ -22,6 +26,26 @@
     },
     {
       "id": "./node_modules/next/node_modules/css-loader/dist/runtime/api.js",
+      "file": "static/chunks/1.js"
+    },
+    {
+      "id": "./node_modules/react-icons/bs/index.esm.js",
+      "file": "static/chunks/1.js"
+    },
+    {
+      "id": "./node_modules/react-icons/lib/esm/iconBase.js",
+      "file": "static/chunks/1.js"
+    },
+    {
+      "id": "./node_modules/react-icons/lib/esm/iconContext.js",
+      "file": "static/chunks/1.js"
+    },
+    {
+      "id": "./node_modules/react-icons/lib/esm/iconsManifest.js",
+      "file": "static/chunks/1.js"
+    },
+    {
+      "id": "./node_modules/react-icons/lib/esm/index.js",
       "file": "static/chunks/1.js"
     },
     {
