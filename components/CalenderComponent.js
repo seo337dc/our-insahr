@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import moment from 'moment';
-import calendarAPI, { event } from '../api/calendarAPI';
+import calendarAPI from '../api/calendarAPI';
 import { BsCheck } from 'react-icons/bs';
 
 const CalenderComponent = ({ sData }) => {
@@ -18,8 +18,13 @@ const CalenderComponent = ({ sData }) => {
     const [data, setData] = useState(sData);
 
     //sData 렌더링 할 때, 데이터 색 지정
+    //캘린더 이벤트 핸들러
+    /*
+    - 서버 api 추가 필요??
+    - 시간 설정에 관하여....
+    - 데이터 추가할 경우 id 값은 자동으로????
+    */
     useEffect(() => {
-        console.log(data, '처음 시작할 때');
         calendarAPI.clear();
         calendarAPI.createSchedules(
             data.map((data) => {
@@ -44,6 +49,40 @@ const CalenderComponent = ({ sData }) => {
                 }
             })
         );
+
+        calendarAPI.on({
+            clickSchedule: function (e) {
+                //console.log('clickSchedule', e, data);
+            },
+            beforeUpdateSchedule: function (e) {
+                //console.log('beforeUpdateSchedule', e, data);
+                calendarAPI.updateSchedule(e.schedule.id, e.schedule.calendarId, e.schedule);
+                setData(data.map((data) => (data.id === e.schedule.id ? { ...data, start: e.start, end: e.end } : data)));
+                calendarAPI.off('beforeUpdateSchedule');
+            },
+            beforeDeleteSchedule: function (e) {
+                //console.log('beforeDeleteSchedule', e, data);
+                calendarAPI.deleteSchedule(e.schedule.id, e.schedule.calendarId);
+                setData(data.filter((data) => data.id !== e.schedule.id));
+                calendarAPI.off('beforeDeleteSchedule');
+            },
+            beforeCreateSchedule: function (e) {
+                //console.log('beforeCreateSchedule', e, data);
+                const newDataObj = {
+                    id: parseInt(sData[sData.length - 1].id) + 1, //데이터 추가할 경우 id 값은 자동으로????
+                    calendarId: '1',
+                    title: e.title,
+                    category: 'time',
+                    isReadOnly: true,
+                    isAllDay: e.isAllDay,
+                    end: new Date(e.end.getTime()).toJSON(), //시간 설정에 관하여....
+                    start: new Date(e.end.getTime()).toJSON(), //'2020-12-31T12:30', //new Date(e.end.getTime()).toJSON(),
+                    location: e.location,
+                };
+                setData(data.concat(newDataObj)); //서버 api 추가 필요??
+                calendarAPI.off('beforeCreateSchedule');
+            },
+        });
     }, [data]);
 
     //전체,업무,공식일정,내부미팅,외부미팅,외근,기타 선택 기능
@@ -200,7 +239,6 @@ const CalenderComponent = ({ sData }) => {
         }
     };
 
-    console.log(calendarAPI);
     return (
         <div className="calender-container">
             <div className="calender-date">
