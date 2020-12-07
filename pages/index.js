@@ -12,7 +12,10 @@ const Index = ({ sData }) => {
 };
 
 export async function getServerSideProps(context) {
-    //서버 api 접근
+    //서버 api 데이터 로직
+    //
+    //
+    //
 
     return {
         props: { sData: schedule_data },

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import moment, { months } from 'moment';
-import calendarAPI from '../api/calendarAPI';
+import moment from 'moment';
+import calendarAPI, { event } from '../api/calendarAPI';
 import { BsCheck } from 'react-icons/bs';
 
 const CalenderComponent = ({ sData }) => {
@@ -15,12 +15,14 @@ const CalenderComponent = ({ sData }) => {
         ect: false,
     });
     const [viewState, setViewState] = useState({ month: true, week: false, day: false });
+    const [data, setData] = useState(sData);
 
-    //처음 렌더링 할 때, 데이터 색 지정
+    //sData 렌더링 할 때, 데이터 색 지정
     useEffect(() => {
+        console.log(data, '처음 시작할 때');
         calendarAPI.clear();
         calendarAPI.createSchedules(
-            sData.map((data) => {
+            data.map((data) => {
                 switch (data.calendarId) {
                     case '1':
                         return { ...data, borderColor: '#176db8', bgColor: '#176db8' };
@@ -42,7 +44,7 @@ const CalenderComponent = ({ sData }) => {
                 }
             })
         );
-    }, []);
+    }, [data]);
 
     //전체,업무,공식일정,내부미팅,외부미팅,외근,기타 선택 기능
     useEffect(() => {
@@ -198,6 +200,7 @@ const CalenderComponent = ({ sData }) => {
         }
     };
 
+    console.log(calendarAPI);
     return (
         <div className="calender-container">
             <div className="calender-date">
@@ -251,7 +254,7 @@ const CalenderComponent = ({ sData }) => {
                 </div>
             </div>
             <div className="calendar-main">
-                <div id="calendar" />
+                <div id="calendar" on />
             </div>
         </div>
     );

@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@toast-ui/react-calendar": "^1.0.5",
     "moment": "^2.29.1",
     "next": "^10.0.3",
     "react": "^17.0.1",
