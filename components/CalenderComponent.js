@@ -52,22 +52,22 @@ const CalenderComponent = ({ sData }) => {
 
         calendarAPI.on({
             clickSchedule: function (e) {
-                console.log('clickSchedule', e, data);
+                //console.log('clickSchedule', e, data);
             },
             beforeUpdateSchedule: function (e) {
-                console.log('beforeUpdateSchedule', e, data);
+                //console.log('beforeUpdateSchedule', e, data);
                 calendarAPI.updateSchedule(e.schedule.id, e.schedule.calendarId, e.schedule);
                 setData(data.map((data) => (data.id === e.schedule.id ? { ...data, start: e.start, end: e.end } : data)));
                 calendarAPI.off('beforeUpdateSchedule');
             },
             beforeDeleteSchedule: function (e) {
-                console.log('beforeDeleteSchedule', e, data);
+                //console.log('beforeDeleteSchedule', e, data);
                 calendarAPI.deleteSchedule(e.schedule.id, e.schedule.calendarId);
                 setData(data.filter((data) => data.id !== e.schedule.id));
                 calendarAPI.off('beforeDeleteSchedule');
             },
             beforeCreateSchedule: function (e) {
-                console.log('beforeCreateSchedule', e, data);
+                //console.log('beforeCreateSchedule', e, data);
                 const newDataObj = {
                     id: parseInt(sData[sData.length - 1].id) + 1, //데이터 추가할 경우 id 값은 자동으로????
                     calendarId: '1',
