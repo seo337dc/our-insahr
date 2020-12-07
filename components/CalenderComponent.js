@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import moment from 'moment';
+import moment, { months } from 'moment';
 import calendarAPI from '../api/calendarAPI';
 import { BsCheck } from 'react-icons/bs';
 
