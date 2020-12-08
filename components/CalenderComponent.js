@@ -52,34 +52,32 @@ const CalenderComponent = ({ sData }) => {
 
         calendarAPI.on({
             clickSchedule: function (e) {
-                //console.log('clickSchedule', e, data);
+                console.log('스케쥴 있는 캘린더 클릭 이벤트', e);
             },
             beforeUpdateSchedule: function (e) {
-                //console.log('beforeUpdateSchedule', e, data);
                 calendarAPI.updateSchedule(e.schedule.id, e.schedule.calendarId, e.schedule);
                 setData(data.map((data) => (data.id === e.schedule.id ? { ...data, start: e.start, end: e.end } : data)));
                 calendarAPI.off('beforeUpdateSchedule');
             },
             beforeDeleteSchedule: function (e) {
-                //console.log('beforeDeleteSchedule', e, data);
                 calendarAPI.deleteSchedule(e.schedule.id, e.schedule.calendarId);
                 setData(data.filter((data) => data.id !== e.schedule.id));
                 calendarAPI.off('beforeDeleteSchedule');
             },
             beforeCreateSchedule: function (e) {
-                //console.log('beforeCreateSchedule', e, data);
-                const newDataObj = {
-                    id: parseInt(sData[sData.length - 1].id) + 1, //데이터 추가할 경우 id 값은 자동으로????
-                    calendarId: '1',
-                    title: e.title,
-                    category: 'time',
-                    isReadOnly: true,
-                    isAllDay: e.isAllDay,
-                    end: new Date(e.end.getTime()).toJSON(), //시간 설정에 관하여....
-                    start: new Date(e.end.getTime()).toJSON(), //'2020-12-31T12:30', //new Date(e.end.getTime()).toJSON(),
-                    location: e.location,
-                };
-                setData(data.concat(newDataObj)); //서버 api 추가 필요??
+                setData(
+                    data.concat({
+                        id: parseInt(sData[sData.length - 1].id) + 1, //데이터 추가할 경우 id 값은 자동으로????
+                        calendarId: '1',
+                        title: e.title,
+                        category: 'time',
+                        isReadOnly: true,
+                        isAllDay: e.isAllDay,
+                        end: new Date(e.end.getTime()).toJSON(), //시간 설정에 관하여....
+                        start: new Date(e.end.getTime()).toJSON(), //'2020-12-31T12:30', //new Date(e.end.getTime()).toJSON(),
+                        location: e.location,
+                    })
+                ); //서버 api 추가 필요??
                 calendarAPI.off('beforeCreateSchedule');
             },
         });
@@ -127,13 +125,13 @@ const CalenderComponent = ({ sData }) => {
             case 'month':
                 setViewState({ month: true, week: false, day: false });
                 calendarAPI.changeView('month', true);
-
                 break;
+
             case 'week':
                 setViewState({ month: false, week: true, day: false });
                 calendarAPI.changeView('week', true);
-
                 break;
+
             case 'day':
                 setViewState({ month: false, week: false, day: true });
                 calendarAPI.changeView('day', true);
@@ -240,60 +238,60 @@ const CalenderComponent = ({ sData }) => {
     };
 
     return (
-        <div className="calender-container">
-            <div className="calender-date">
-                <div className="date-btn" onClick={() => onHandleDate('-')}>{`<`}</div>
-                <div className="date">
-                    {today.getFullYear()}.{today.getMonth() + 1 < 10 ? '0' + (today.getMonth() + 1) : today.getMonth() + 1}
+        <div>
+            <div className="calender-container">
+                <div className="calender-date">
+                    <div className="date-btn" onClick={() => onHandleDate('-')}>{`<`}</div>
+                    <div className="date">
+                        {today.getFullYear()}.{today.getMonth() + 1 < 10 ? '0' + (today.getMonth() + 1) : today.getMonth() + 1}
+                    </div>
+                    <div className="date-btn" onClick={() => onHandleDate('+')}>{`>`}</div>
                 </div>
-                <div className="date-btn" onClick={() => onHandleDate('+')}>{`>`}</div>
-            </div>
-            <div className="calender-menu">
-                <div className="calender-color">
-                    <div onClick={() => onHandleCalColor(0)}>
-                        <div className="total">{checkColor.total && <BsCheck color="white" />}</div>
-                        <p>전체</p>
+                <div className="calender-menu">
+                    <div className="calender-color">
+                        <div onClick={() => onHandleCalColor(0)}>
+                            <div className="total">{checkColor.total && <BsCheck color="white" />}</div>
+                            <p>전체</p>
+                        </div>
+                        <div onClick={() => onHandleCalColor(1)}>
+                            <div className="task">{checkColor.task && <BsCheck color="white" />}</div>
+                            <p>업무</p>
+                        </div>
+                        <div onClick={() => onHandleCalColor(2)}>
+                            <div className="official-schedule">{checkColor.officialSchedule && <BsCheck color="white" />}</div>
+                            <p>공식 일정</p>
+                        </div>
+                        <div onClick={() => onHandleCalColor(3)}>
+                            <div className="internal-meeting">{checkColor.internalMeeting && <BsCheck color="white" />}</div>
+                            <p>내부미팅</p>
+                        </div>
+                        <div onClick={() => onHandleCalColor(4)}>
+                            <div className="external-meeting">{checkColor.externalMeeting && <BsCheck color="white" />}</div>
+                            <p>외부미팅</p>
+                        </div>
+                        <div onClick={() => onHandleCalColor(5)}>
+                            <div className="outside-work">{checkColor.outsideWork && <BsCheck color="white" />}</div>
+                            <p>외근</p>
+                        </div>
+                        <div onClick={() => onHandleCalColor(99)}>
+                            <div className="ect">{checkColor.ect && <BsCheck color="white" />}</div>
+                            <p>기타</p>
+                        </div>
                     </div>
-                    <div onClick={() => onHandleCalColor(1)}>
-                        <div className="task">{checkColor.task && <BsCheck color="white" />}</div>
-                        <p>업무</p>
-                    </div>
-                    <div onClick={() => onHandleCalColor(2)}>
-                        <div className="official-schedule">{checkColor.officialSchedule && <BsCheck color="white" />}</div>
-                        <p>공식 일정</p>
-                    </div>
-                    <div onClick={() => onHandleCalColor(3)}>
-                        <div className="internal-meeting">{checkColor.internalMeeting && <BsCheck color="white" />}</div>
-                        <p>내부미팅</p>
-                    </div>
-                    <div onClick={() => onHandleCalColor(4)}>
-                        <div className="external-meeting">{checkColor.externalMeeting && <BsCheck color="white" />}</div>
-                        <p>외부미팅</p>
-                    </div>
-                    <div onClick={() => onHandleCalColor(5)}>
-                        <div className="outside-work">{checkColor.outsideWork && <BsCheck color="white" />}</div>
-                        <p>외근</p>
-                    </div>
-                    <div onClick={() => onHandleCalColor(99)}>
-                        <div className="ect">{checkColor.ect && <BsCheck color="white" />}</div>
-                        <p>기타</p>
+                    <div className="calender-category">
+                        <div className={viewState['month'] ? 'disable-on' : 'disable-off'} onClick={() => onHandleView('month')}>
+                            <img src="img/month-icons.png" />
+                        </div>
+                        <div className={viewState['week'] ? 'disable-on' : 'disable-off'} onClick={() => onHandleView('week')}>
+                            <img src="img/week-icons.png" />
+                        </div>
+                        <div className={viewState['day'] ? 'disable-on' : 'disable-off'} onClick={() => onHandleView('day')}>
+                            <img src="img/day-icons.png" />
+                        </div>
                     </div>
                 </div>
-                <div className="calender-category">
-                    <div className={viewState['month'] ? 'disable-on' : 'disable-off'} onClick={() => onHandleView('month')}>
-                        <img src="img/month-icons.png" />
-                    </div>
-                    <div className={viewState['week'] ? 'disable-on' : 'disable-off'} onClick={() => onHandleView('week')}>
-                        <img src="img/week-icons.png" />
-                    </div>
-                    <div className={viewState['day'] ? 'disable-on' : 'disable-off'} onClick={() => onHandleView('day')}>
-                        <img src="img/day-icons.png" />
-                    </div>
-                </div>
             </div>
-            <div className="calendar-main">
-                <div id="calendar" on />
-            </div>
+            <div id="calendar" />
         </div>
     );
 };
