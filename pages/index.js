@@ -1,13 +1,11 @@
-import dynamic from 'next/dynamic';
-import schedule_data from '../config/schedule_data';
+import Link from 'next/link';
+import Layout from '../components/Layout/Layout';
 
-const DynamicComponentWithNoSSR = dynamic(() => import('../components/CalenderComponent'), { ssr: false });
-
-const Index = ({ sData }) => {
+const Index = (props) => {
     return (
-        <div>
-            <DynamicComponentWithNoSSR sData={sData} />
-        </div>
+        <Layout>
+            <h1>메인 페이지 화면</h1>
+        </Layout>
     );
 };
 
@@ -18,7 +16,7 @@ export async function getServerSideProps(context) {
     //
 
     return {
-        props: { sData: schedule_data },
+        props: {},
     };
 }
 

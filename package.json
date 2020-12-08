@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "@toast-ui/react-calendar": "^1.0.5",
+    "express": "^4.17.1",
     "moment": "^2.29.1",
     "next": "^10.0.3",
     "react": "^17.0.1",
@@ -10,6 +10,6 @@
     "tui-calendar": "^1.12.14"
   },
   "scripts": {
-    "dev": "next"
+    "dev": "node server.js"
   }
 }

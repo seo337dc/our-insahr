@@ -4,7 +4,7 @@ import 'tui-date-picker/dist/tui-date-picker.css';
 import 'tui-time-picker/dist/tui-time-picker.css';
 
 // 캘린더 API 세팅
-const calendarAPI = new Calendar('#calendar', {
+const calendarAPI = new Calendar('#aaa', {
     defaultView: 'month',
     taskView: true,
     useCreationPopup: true,
@@ -16,4 +16,6 @@ const calendarAPI = new Calendar('#calendar', {
         },
     },
 });
+
+var Cal = tui.Cal;
 export default calendarAPI;
